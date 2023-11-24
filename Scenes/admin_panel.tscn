@@ -1,0 +1,334 @@
+[gd_scene load_steps=17 format=3 uid="uid://c7sjf1mk8drya"]
+
+[ext_resource type="Script" path="res://Scenes/admin_panel.gd" id="1_0ufeo"]
+[ext_resource type="PackedScene" uid="uid://b00u4x8pfkfi7" path="res://Objects/tree_name_option.tscn" id="2_ly326"]
+[ext_resource type="StyleBox" uid="uid://cc3y63knchcv3" path="res://Assets/Styles/white_back_blue_borders.tres" id="3_rcjwq"]
+[ext_resource type="StyleBox" uid="uid://c3nl2fr2yle2k" path="res://Assets/Styles/blue_button.tres" id="4_515pg"]
+[ext_resource type="StyleBox" uid="uid://bv1o2ciq0ndps" path="res://Assets/Styles/white_back_red_borders.tres" id="4_hxdkr"]
+[ext_resource type="PackedScene" uid="uid://l68yt0p14fpf" path="res://Objects/cool_button.tscn" id="5_8dq3o"]
+[ext_resource type="StyleBox" uid="uid://sj4sw626k6fa" path="res://Assets/Styles/hover_button.tres" id="5_whln5"]
+[ext_resource type="StyleBox" uid="uid://dd5xkjppnprpd" path="res://Assets/Styles/pressed_button.tres" id="6_12tl8"]
+[ext_resource type="Theme" uid="uid://2643a6p0thsb" path="res://Assets/Themes/option_menu_theme.tres" id="6_eyi35"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2u0lb"]
+content_margin_left = 25.0
+content_margin_top = 25.0
+content_margin_right = 25.0
+content_margin_bottom = 25.0
+bg_color = Color(0.552941, 0.686275, 0.811765, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6ktku"]
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pa2pr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gbnwv"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1v6gy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h0uu5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0tter"]
+
+[node name="AdminPanel" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2u0lb")
+script = ExtResource("1_0ufeo")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Left" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TreeNames" type="VBoxContainer" parent="HBoxContainer/Left"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="HBoxContainer/Left/TreeNames"]
+layout_mode = 2
+text = "Имена деревьев"
+label_settings = SubResource("LabelSettings_6ktku")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/Left/TreeNames"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Options" type="VBoxContainer" parent="HBoxContainer/Left/TreeNames/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 25
+
+[node name="ChangeNames7" parent="HBoxContainer/Left/TreeNames/ScrollContainer/Options" instance=ExtResource("2_ly326")]
+visible = false
+layout_mode = 2
+
+[node name="Editing" type="VBoxContainer" parent="HBoxContainer/Left"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_override_constants/separation = 25
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/Left/Editing"]
+layout_mode = 2
+theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("StyleBoxEmpty_pa2pr")
+
+[node name="Label" type="Label" parent="HBoxContainer/Left/Editing"]
+layout_mode = 2
+text = "Введите отредактированное значение"
+label_settings = SubResource("LabelSettings_gbnwv")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TextEdit" type="TextEdit" parent="HBoxContainer/Left/Editing"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("3_rcjwq")
+theme_override_styles/focus = ExtResource("4_hxdkr")
+wrap_mode = 1
+scroll_fit_content_height = true
+caret_blink = true
+
+[node name="SubmitChange" parent="HBoxContainer/Left/Editing" instance=ExtResource("5_8dq3o")]
+layout_mode = 2
+text = "Изменить"
+
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/Left/Editing"]
+layout_mode = 2
+theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("StyleBoxEmpty_pa2pr")
+
+[node name="Label3" type="Label" parent="HBoxContainer/Left/Editing"]
+layout_mode = 2
+text = "Введите новое имя"
+label_settings = SubResource("LabelSettings_gbnwv")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="AddNewName" type="TextEdit" parent="HBoxContainer/Left/Editing"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("3_rcjwq")
+theme_override_styles/focus = ExtResource("4_hxdkr")
+wrap_mode = 1
+scroll_fit_content_height = true
+caret_blink = true
+
+[node name="AddNew" parent="HBoxContainer/Left/Editing" instance=ExtResource("5_8dq3o")]
+layout_mode = 2
+text = "Добавить новое значение"
+
+[node name="HSeparator3" type="HSeparator" parent="HBoxContainer/Left/Editing"]
+layout_mode = 2
+theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("StyleBoxEmpty_pa2pr")
+
+[node name="DeleteBtn" parent="HBoxContainer/Left/Editing" instance=ExtResource("5_8dq3o")]
+layout_mode = 2
+text = "Удалить имя"
+
+[node name="TreeCompat" type="VBoxContainer" parent="HBoxContainer/Left"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="HBoxContainer/Left/TreeCompat"]
+layout_mode = 2
+text = "Совместимости деревьев"
+label_settings = SubResource("LabelSettings_6ktku")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/Left/TreeCompat"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Compatibilities" type="VBoxContainer" parent="HBoxContainer/Left/TreeCompat/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 25
+
+[node name="EditCompat" type="VBoxContainer" parent="HBoxContainer/Left"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_override_constants/separation = 20
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/Left/EditCompat"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_pa2pr")
+
+[node name="Label" type="Label" parent="HBoxContainer/Left/EditCompat"]
+layout_mode = 2
+text = "Введите отредактированное значение"
+label_settings = SubResource("LabelSettings_gbnwv")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="edit_compat" type="TextEdit" parent="HBoxContainer/Left/EditCompat"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("3_rcjwq")
+theme_override_styles/focus = ExtResource("4_hxdkr")
+wrap_mode = 1
+scroll_fit_content_height = true
+caret_blink = true
+
+[node name="SubmitCompatChange" parent="HBoxContainer/Left/EditCompat" instance=ExtResource("5_8dq3o")]
+layout_mode = 2
+text = "Изменить"
+
+[node name="Label3" type="Label" parent="HBoxContainer/Left/EditCompat"]
+layout_mode = 2
+text = "Добавить новую совместимость"
+label_settings = SubResource("LabelSettings_gbnwv")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label4" type="Label" parent="HBoxContainer/Left/EditCompat"]
+layout_mode = 2
+text = "Выберите первый вид дерева"
+label_settings = SubResource("LabelSettings_gbnwv")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="SelectedTree1" type="OptionButton" parent="HBoxContainer/Left/EditCompat"]
+layout_mode = 2
+theme = ExtResource("6_eyi35")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1v6gy")
+theme_override_styles/normal = ExtResource("4_515pg")
+theme_override_styles/hover = ExtResource("5_whln5")
+theme_override_styles/pressed = ExtResource("6_12tl8")
+item_count = 1
+popup/item_0/text = "Дуб"
+popup/item_0/id = 0
+
+[node name="Label6" type="Label" parent="HBoxContainer/Left/EditCompat"]
+layout_mode = 2
+text = "Выберите второй вид дерева"
+label_settings = SubResource("LabelSettings_gbnwv")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="SelectedTree2" type="OptionButton" parent="HBoxContainer/Left/EditCompat"]
+layout_mode = 2
+theme = ExtResource("6_eyi35")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1v6gy")
+theme_override_styles/normal = ExtResource("4_515pg")
+theme_override_styles/hover = ExtResource("5_whln5")
+theme_override_styles/pressed = ExtResource("6_12tl8")
+item_count = 1
+popup/item_0/text = "Дуб"
+popup/item_0/id = 0
+
+[node name="Label5" type="Label" parent="HBoxContainer/Left/EditCompat"]
+layout_mode = 2
+text = "Введите совместимость"
+label_settings = SubResource("LabelSettings_gbnwv")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="AddNewCompatValue" type="TextEdit" parent="HBoxContainer/Left/EditCompat"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("3_rcjwq")
+theme_override_styles/focus = ExtResource("4_hxdkr")
+wrap_mode = 1
+scroll_fit_content_height = true
+caret_blink = true
+
+[node name="AddNewCompat" parent="HBoxContainer/Left/EditCompat" instance=ExtResource("5_8dq3o")]
+layout_mode = 2
+text = "Добавить новое значение"
+
+[node name="DeleteCompatBtn" parent="HBoxContainer/Left/EditCompat" instance=ExtResource("5_8dq3o")]
+layout_mode = 2
+text = "Удалить совместимость"
+
+[node name="Right" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.33
+theme_override_constants/separation = 25
+
+[node name="ChangeNames" parent="HBoxContainer/Right" instance=ExtResource("5_8dq3o")]
+layout_mode = 2
+text = "Изменить имена деревьев"
+
+[node name="ChangeCompat" parent="HBoxContainer/Right" instance=ExtResource("5_8dq3o")]
+layout_mode = 2
+text = "Редактировать совместимость деревьев"
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/Right"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_h0uu5")
+
+[node name="Exit" type="Button" parent="HBoxContainer/Right"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = ExtResource("4_515pg")
+theme_override_styles/hover = ExtResource("5_whln5")
+theme_override_styles/pressed = ExtResource("6_12tl8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0tter")
+text = "В поиск"
+
+[connection signal="button_up" from="HBoxContainer/Right/Exit" to="." method="_on_exit_button_up"]

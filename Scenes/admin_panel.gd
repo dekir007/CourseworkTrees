@@ -41,7 +41,8 @@ var cur_compat : TreeCompatOption :
 
 
 func _ready() -> void:
-	db.path = "E:\\DataBases\\trees.sqlite"
+	db.path = "res://trees.sqlite"
+	db.foreign_keys = true
 	
 	submit_change_btn.btn.button_up.connect(submit_change)
 	add_new_btn.btn.button_up.connect(add_new_name)

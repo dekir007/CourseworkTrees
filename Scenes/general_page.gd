@@ -22,7 +22,8 @@ var criterion_to_column_name = {
 var db := SQLite.new()
 
 func _ready() -> void:
-	db.path = "E:\\DataBases\\trees.sqlite"
+	db.path = "res://trees.sqlite"
+	db.foreign_keys = true
 	for table in Tables.values():
 		tables.add_item(table)
 

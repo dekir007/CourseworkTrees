@@ -188,6 +188,8 @@ func add_new_compat():
 		add_new_compat_value.clear()
 
 func delete_name():
+	if cur_option == null:
+		return
 	db.open_db()
 	db.query("delete from TreeNames where name = \'" + cur_option.text + "\'")
 	db.close_db()
@@ -197,6 +199,8 @@ func delete_name():
 		edit_name.clear()
 
 func delete_compat():
+	if cur_compat == null:
+		return
 	db.open_db()
 	db.query("delete from TreesCompatibility where tree1 = (select id from TreeNames where name = \'" + cur_compat.tree1+ "\') and tree2 = (select id from TreeNames where name = \'" + cur_compat.tree2+ "\')")
 	db.close_db()
@@ -214,3 +218,7 @@ func set_cur_option(new_opt : TreeNameOption):
 
 func _on_exit_button_up() -> void:
 	get_tree().change_scene_to_file("res://Scenes/general_page.tscn")
+
+
+func _on_in_editor_button_up() -> void:
+	get_tree().change_scene_to_file("res://Scenes/editor_vp_container.tscn")

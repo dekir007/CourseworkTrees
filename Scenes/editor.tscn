@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://vxk3egckpk16"]
+
+[ext_resource type="Script" path="res://Scenes/editor.gd" id="1_m1bey"]
+[ext_resource type="Texture2D" uid="uid://cdwou2mjvdyui" path="res://Assets/photo.png" id="2_5ev8q"]
+[ext_resource type="Script" path="res://Scripts/CameraWithZoom.gd" id="3_7rnwo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d1qoy"]
+font_size = 32
+
+[node name="Editor" type="Node2D"]
+script = ExtResource("1_m1bey")
+
+[node name="Photo" type="Sprite2D" parent="."]
+position = Vector2(462, 608)
+scale = Vector2(2.5374, 2.31764)
+texture = ExtResource("2_5ev8q")
+region_rect = Rect2(889, 463.5, 580, 356)
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("sprite")]
+position = Vector2(960, 540)
+position_smoothing_enabled = true
+position_smoothing_speed = 25.0
+script = ExtResource("3_7rnwo")
+clamp_viewport = false
+sprite = NodePath("../Photo")
+
+[node name="tmp" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 19.0
+label_settings = SubResource("LabelSettings_d1qoy")

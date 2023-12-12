@@ -1,0 +1,292 @@
+[gd_scene load_steps=17 format=3 uid="uid://cx4jqxuw2im3q"]
+
+[ext_resource type="StyleBox" uid="uid://cc3y63knchcv3" path="res://Assets/Styles/white_back_blue_borders.tres" id="1_3dpfb"]
+[ext_resource type="Script" path="res://Objects/add_tree_query_box.gd" id="2_8kpi3"]
+[ext_resource type="StyleBox" uid="uid://bv1o2ciq0ndps" path="res://Assets/Styles/white_back_red_borders.tres" id="2_cjdax"]
+[ext_resource type="Theme" uid="uid://2643a6p0thsb" path="res://Assets/Themes/option_menu_theme.tres" id="3_2ixpw"]
+[ext_resource type="StyleBox" uid="uid://c3nl2fr2yle2k" path="res://Assets/Styles/blue_button.tres" id="4_5j7rn"]
+[ext_resource type="StyleBox" uid="uid://sj4sw626k6fa" path="res://Assets/Styles/hover_button.tres" id="5_pcu85"]
+[ext_resource type="StyleBox" uid="uid://dd5xkjppnprpd" path="res://Assets/Styles/pressed_button.tres" id="6_m4g2q"]
+[ext_resource type="PackedScene" uid="uid://l68yt0p14fpf" path="res://Objects/cool_button.tscn" id="7_vx0gq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k023j"]
+content_margin_left = 15.0
+content_margin_top = 5.0
+content_margin_right = 15.0
+content_margin_bottom = 5.0
+bg_color = Color(0.94902, 0.458824, 0.0980392, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c5ay5"]
+content_margin_left = 15.0
+content_margin_top = 5.0
+content_margin_right = 15.0
+content_margin_bottom = 5.0
+bg_color = Color(0.803922, 0.215686, 0.0784314, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_inex6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r5b4o"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lsbed"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hquof"]
+content_margin_left = 25.0
+content_margin_top = 25.0
+content_margin_right = 25.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.113725, 0.478431, 1, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_663h1"]
+content_margin_left = 25.0
+content_margin_top = 15.0
+content_margin_right = 25.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.945098, 0, 0.219608, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3qcdy"]
+
+[node name="AddTreeQueryBox" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(0.7, 0.7)
+mouse_filter = 2
+script = ExtResource("2_8kpi3")
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -258.5
+offset_top = -647.0
+offset_right = 258.5
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("1_3dpfb")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="TreeName" type="TextEdit" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0.815686, 0.113725, 0.0745098, 0.705882)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("1_3dpfb")
+theme_override_styles/focus = ExtResource("2_cjdax")
+placeholder_text = "Имя дерева"
+wrap_mode = 1
+scroll_fit_content_height = true
+caret_blink = true
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_k023j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_c5ay5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_k023j")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_inex6")
+toggle_mode = true
+text = "X"
+
+[node name="Label3" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Вид дерева"
+label_settings = SubResource("LabelSettings_r5b4o")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TreeKind" type="OptionButton" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_2ixpw")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lsbed")
+theme_override_styles/normal = ExtResource("4_5j7rn")
+theme_override_styles/hover = ExtResource("5_pcu85")
+theme_override_styles/pressed = ExtResource("6_m4g2q")
+item_count = 1
+selected = 0
+popup/item_0/text = "Дуб"
+popup/item_0/id = 0
+
+[node name="Label5" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Координаты"
+label_settings = SubResource("LabelSettings_r5b4o")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="CoordsInput" type="TextEdit" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0.815686, 0.113725, 0.0745098, 0.686275)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("1_3dpfb")
+theme_override_styles/focus = ExtResource("2_cjdax")
+placeholder_text = "Координаты"
+wrap_mode = 1
+scroll_fit_content_height = true
+caret_blink = true
+
+[node name="Label4" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Насаждение"
+label_settings = SubResource("LabelSettings_r5b4o")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Plantation" type="OptionButton" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_2ixpw")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lsbed")
+theme_override_styles/normal = ExtResource("4_5j7rn")
+theme_override_styles/hover = ExtResource("5_pcu85")
+theme_override_styles/pressed = ExtResource("6_m4g2q")
+item_count = 1
+selected = 0
+popup/item_0/text = "Насаждение №1"
+popup/item_0/id = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="DayInput" type="TextEdit" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0.815686, 0.113725, 0.0745098, 0.705882)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_hquof")
+theme_override_styles/focus = SubResource("StyleBoxFlat_663h1")
+placeholder_text = "01"
+autowrap_mode = 1
+caret_blink = true
+
+[node name="MonthInput" type="OptionButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_2ixpw")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lsbed")
+theme_override_styles/normal = ExtResource("4_5j7rn")
+theme_override_styles/hover = ExtResource("5_pcu85")
+theme_override_styles/pressed = ExtResource("6_m4g2q")
+item_count = 12
+selected = 0
+popup/item_0/text = "Январь"
+popup/item_0/id = 0
+popup/item_1/text = "Февраль"
+popup/item_1/id = 1
+popup/item_2/text = "Март"
+popup/item_2/id = 2
+popup/item_3/text = "Апрель"
+popup/item_3/id = 3
+popup/item_4/text = "Май"
+popup/item_4/id = 4
+popup/item_5/text = "Июнь"
+popup/item_5/id = 5
+popup/item_6/text = "Июль"
+popup/item_6/id = 6
+popup/item_7/text = "Август"
+popup/item_7/id = 7
+popup/item_8/text = "Сентябрь"
+popup/item_8/id = 8
+popup/item_9/text = "Октрябрь"
+popup/item_9/id = 9
+popup/item_10/text = "Ноябрь"
+popup/item_10/id = 10
+popup/item_11/text = "Декабрь"
+popup/item_11/id = 11
+
+[node name="YearInput" type="TextEdit" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0.815686, 0.113725, 0.0745098, 0.705882)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_hquof")
+theme_override_styles/focus = SubResource("StyleBoxFlat_663h1")
+placeholder_text = "2023"
+autowrap_mode = 1
+caret_blink = true
+
+[node name="HSeparator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3qcdy")
+
+[node name="CoolButton" parent="Panel/MarginContainer/VBoxContainer" instance=ExtResource("7_vx0gq")]
+layout_mode = 2
+text = "Добавить"
+
+[connection signal="button_up" from="Panel/MarginContainer/VBoxContainer/HBoxContainer2/Button" to="." method="_on_button_button_up"]

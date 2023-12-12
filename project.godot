@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Coursework Trees"
-run/main_scene="res://Scenes/admin_panel.tscn"
-config/features=PackedStringArray("4.1", "Mobile")
+run/main_scene="res://Scenes/editor_vp_container.tscn"
+config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
 [display]
@@ -22,10 +22,24 @@ window/size/viewport_height=1080
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+window/stretch/aspect="ignore"
 
 [gui]
 
 theme/custom_font="res://Assets/Fonts/Roboto-Regular.ttf"
+
+[input]
+
+zoom_up={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":8,"position":Vector2(121, 14),"global_position":Vector2(125, 55),"factor":1.0,"button_index":4,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+zoom_down={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":16,"position":Vector2(207, 4),"global_position":Vector2(211, 45),"factor":1.0,"button_index":5,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
 
 [rendering]
 

@@ -51,7 +51,7 @@ func _on_tables_item_selected(index: int) -> void:
 			output.append_text("[b]Деревья[/b]\n")
 			for row in db.query_result:
 				#output.append_text(str(row)+"\n")
-				output.append_text("[b]"+str(row["ID"]) +". Название: " + row["Name"] + "[/b]\nВид дерева: "+str(row["TreeName"]) + "\nНасаждение: "+str(row["Plantation"]) + "\nКоординаты: "+str(row["Coords"]) + "\nДата посадки: "+str(row["PlantDate"]) + "\nДата вырубки: "+str(row["CutDate"] if row["CutDate"] != null else "Не вырублено") + "\n")
+				output.append_text("[b]"+str(row["ID"]) +". Название: " + str(row["Name"]) + "[/b]\nВид дерева: "+str(row["TreeName"]) + "\nНасаждение: "+str(row["Plantation"]) + "\nКоординаты: "+str(row["Coords"]) + "\nДата посадки: "+str(row["PlantDate"]) + "\nДата вырубки: "+str(row["CutDate"] if row["CutDate"] != null else "Не вырублено") + "\n")
 		
 	#db.query("SELECT name FROM PRAGMA_TABLE_INFO('" + tables.get_item_text(index) + "')")
 	db.close_db()

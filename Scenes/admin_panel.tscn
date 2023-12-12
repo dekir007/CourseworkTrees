@@ -314,7 +314,24 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_h0uu5")
 
-[node name="Exit" type="Button" parent="HBoxContainer/Right"]
+[node name="InEditor" type="Button" parent="HBoxContainer/Right"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = ExtResource("4_515pg")
+theme_override_styles/hover = ExtResource("5_whln5")
+theme_override_styles/pressed = ExtResource("6_12tl8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0tter")
+text = "В редактор"
+
+[node name="Exit2" type="Button" parent="HBoxContainer/Right"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -331,4 +348,5 @@ theme_override_styles/pressed = ExtResource("6_12tl8")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0tter")
 text = "В поиск"
 
-[connection signal="button_up" from="HBoxContainer/Right/Exit" to="." method="_on_exit_button_up"]
+[connection signal="button_up" from="HBoxContainer/Right/InEditor" to="." method="_on_in_editor_button_up"]
+[connection signal="button_up" from="HBoxContainer/Right/Exit2" to="." method="_on_exit_button_up"]

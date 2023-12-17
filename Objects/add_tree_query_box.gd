@@ -1,7 +1,7 @@
 extends Control
 class_name AddTreeQueryBox
 
-signal query(tree_args)
+signal query(tree_args : TreeArgs)
 
 @onready var cool_button: CoolButton = $Panel/MarginContainer/VBoxContainer/CoolButton as CoolButton
 @onready var tree_name: TextEdit = $Panel/MarginContainer/VBoxContainer/HBoxContainer2/TreeName
@@ -21,7 +21,9 @@ func _ready() -> void:
 		args.tree_name = tree_name.text
 		args.tree_kind = tree_kind.text
 		args.coords = coords_input.text
-		args.plant_date = year_input.text +"-"+month_input.text +"-"+day_input.text
+		
+		args.plant_date = year_input.text +"-"+str(month_input.get_selected_id()+1).lpad(2, "0") +"-"+day_input.text.lpad(2, "0")
+		args.plantation = plantation.text
 		args.sender = self
 		query.emit(args)
 		)
@@ -35,11 +37,17 @@ func _ready() -> void:
 		plantation.add_item(plantation_name)
 	
 	coords_input.text = str(int(global_position.x))+";"+str(int(global_position.y))
+	
+	var date = Time.get_date_dict_from_system()
+	day_input.text = str(date["day"])
+	month_input.select(date["month"] - 1) 
+	year_input.text = str(date["year"])
 
 class TreeArgs:
 	var sender : AddTreeQueryBox
 	var tree_name:String
 	var tree_kind:String
+	var plantation:String
 	var coords:String
 	var plant_date:String
 

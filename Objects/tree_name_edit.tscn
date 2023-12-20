@@ -1,0 +1,118 @@
+[gd_scene load_steps=8 format=3 uid="uid://btqjf5hafc4fb"]
+
+[ext_resource type="Script" path="res://Objects/tree_name_edit.gd" id="1_vcam5"]
+[ext_resource type="StyleBox" uid="uid://cc3y63knchcv3" path="res://Assets/Styles/white_back_blue_borders.tres" id="2_sjp7u"]
+[ext_resource type="StyleBox" uid="uid://bv1o2ciq0ndps" path="res://Assets/Styles/white_back_red_borders.tres" id="3_awaw2"]
+[ext_resource type="PackedScene" uid="uid://l68yt0p14fpf" path="res://Objects/cool_button.tscn" id="4_t30w8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mx0dn"]
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pyd5b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1vfpl"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="TreeNameEdit" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vcam5")
+
+[node name="TreeNames" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="TreeNames"]
+layout_mode = 2
+text = "Имена деревьев"
+label_settings = SubResource("LabelSettings_mx0dn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TreeNames"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Options" type="VBoxContainer" parent="TreeNames/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 25
+
+[node name="Editing" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_override_constants/separation = 25
+
+[node name="HSeparator" type="HSeparator" parent="Editing"]
+layout_mode = 2
+theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("StyleBoxEmpty_pyd5b")
+
+[node name="Label" type="Label" parent="Editing"]
+layout_mode = 2
+text = "Введите отредактированное значение"
+label_settings = SubResource("LabelSettings_1vfpl")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TextEdit" type="TextEdit" parent="Editing"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("2_sjp7u")
+theme_override_styles/focus = ExtResource("3_awaw2")
+wrap_mode = 1
+scroll_fit_content_height = true
+caret_blink = true
+
+[node name="SubmitChange" parent="Editing" instance=ExtResource("4_t30w8")]
+layout_mode = 2
+text = "Изменить"
+
+[node name="HSeparator2" type="HSeparator" parent="Editing"]
+layout_mode = 2
+theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("StyleBoxEmpty_pyd5b")
+
+[node name="Label3" type="Label" parent="Editing"]
+layout_mode = 2
+text = "Введите новое имя"
+label_settings = SubResource("LabelSettings_1vfpl")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="AddNewName" type="TextEdit" parent="Editing"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("2_sjp7u")
+theme_override_styles/focus = ExtResource("3_awaw2")
+wrap_mode = 1
+scroll_fit_content_height = true
+caret_blink = true
+
+[node name="AddNew" parent="Editing" instance=ExtResource("4_t30w8")]
+layout_mode = 2
+text = "Добавить новое значение"
+
+[node name="HSeparator3" type="HSeparator" parent="Editing"]
+layout_mode = 2
+theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("StyleBoxEmpty_pyd5b")
+
+[node name="DeleteBtn" parent="Editing" instance=ExtResource("4_t30w8")]
+layout_mode = 2
+text = "Удалить имя"

@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/editor_vp_container.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://Scripts/Globals.gd"
+
 [display]
 
 window/size/viewport_width=1920
@@ -23,6 +27,16 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="ignore"
+
+[file_customization]
+
+folder_colors={
+"res://Assets/": "red",
+"res://Objects/": "yellow",
+"res://Scenes/": "green",
+"res://Scripts/": "purple",
+"res://addons/": "gray"
+}
 
 [gui]
 
@@ -44,3 +58,4 @@ zoom_down={
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

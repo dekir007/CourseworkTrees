@@ -47,8 +47,8 @@ func _ready() -> void:
 		query.emit(args)
 		)
 	tree_kind.clear()
-	for tree in names:
-		tree_kind.add_item(tree)
+	for tree_n in names:
+		tree_kind.add_item(tree_n)
 	
 	plantation.clear()
 	for plantation_name in plantation_names:

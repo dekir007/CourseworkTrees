@@ -1,5 +1,5 @@
 extends PanelContainer
-class_name TreeNameOption
+class_name NameOption
 
 @export var text : String :
 	set(value):

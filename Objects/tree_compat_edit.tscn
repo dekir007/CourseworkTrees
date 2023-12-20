@@ -1,0 +1,175 @@
+[gd_scene load_steps=13 format=3 uid="uid://dx716lko2hxfo"]
+
+[ext_resource type="StyleBox" uid="uid://cc3y63knchcv3" path="res://Assets/Styles/white_back_blue_borders.tres" id="1_6v11c"]
+[ext_resource type="Script" path="res://Objects/tree_compat_edit.gd" id="1_woa1y"]
+[ext_resource type="StyleBox" uid="uid://bv1o2ciq0ndps" path="res://Assets/Styles/white_back_red_borders.tres" id="2_3f3e0"]
+[ext_resource type="PackedScene" uid="uid://l68yt0p14fpf" path="res://Objects/cool_button.tscn" id="3_pxn1g"]
+[ext_resource type="Theme" uid="uid://2643a6p0thsb" path="res://Assets/Themes/option_menu_theme.tres" id="4_0u1n8"]
+[ext_resource type="StyleBox" uid="uid://c3nl2fr2yle2k" path="res://Assets/Styles/blue_button.tres" id="5_upscb"]
+[ext_resource type="StyleBox" uid="uid://sj4sw626k6fa" path="res://Assets/Styles/hover_button.tres" id="6_0btge"]
+[ext_resource type="StyleBox" uid="uid://dd5xkjppnprpd" path="res://Assets/Styles/pressed_button.tres" id="7_6hd3h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p8tw8"]
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mphuw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vetg5"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dwuk1"]
+
+[node name="TreeCompatEdit" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_woa1y")
+
+[node name="TreeCompat" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="TreeCompat"]
+layout_mode = 2
+text = "Совместимости деревьев"
+label_settings = SubResource("LabelSettings_p8tw8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TreeCompat"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Compatibilities" type="VBoxContainer" parent="TreeCompat/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 25
+
+[node name="EditCompat" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_override_constants/separation = 20
+
+[node name="HSeparator" type="HSeparator" parent="EditCompat"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_mphuw")
+
+[node name="Label" type="Label" parent="EditCompat"]
+layout_mode = 2
+text = "Введите отредактированное значение"
+label_settings = SubResource("LabelSettings_vetg5")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="edit_compat" type="TextEdit" parent="EditCompat"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("1_6v11c")
+theme_override_styles/focus = ExtResource("2_3f3e0")
+wrap_mode = 1
+scroll_fit_content_height = true
+caret_blink = true
+
+[node name="SubmitCompatChange" parent="EditCompat" instance=ExtResource("3_pxn1g")]
+layout_mode = 2
+text = "Изменить"
+
+[node name="Label3" type="Label" parent="EditCompat"]
+layout_mode = 2
+text = "Добавить новую совместимость"
+label_settings = SubResource("LabelSettings_vetg5")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label4" type="Label" parent="EditCompat"]
+layout_mode = 2
+text = "Выберите первый вид дерева"
+label_settings = SubResource("LabelSettings_vetg5")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="SelectedTree1" type="OptionButton" parent="EditCompat"]
+layout_mode = 2
+theme = ExtResource("4_0u1n8")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dwuk1")
+theme_override_styles/normal = ExtResource("5_upscb")
+theme_override_styles/hover = ExtResource("6_0btge")
+theme_override_styles/pressed = ExtResource("7_6hd3h")
+item_count = 1
+popup/item_0/text = "Дуб"
+popup/item_0/id = 0
+
+[node name="Label6" type="Label" parent="EditCompat"]
+layout_mode = 2
+text = "Выберите второй вид дерева"
+label_settings = SubResource("LabelSettings_vetg5")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="SelectedTree2" type="OptionButton" parent="EditCompat"]
+layout_mode = 2
+theme = ExtResource("4_0u1n8")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dwuk1")
+theme_override_styles/normal = ExtResource("5_upscb")
+theme_override_styles/hover = ExtResource("6_0btge")
+theme_override_styles/pressed = ExtResource("7_6hd3h")
+item_count = 1
+popup/item_0/text = "Дуб"
+popup/item_0/id = 0
+
+[node name="Label5" type="Label" parent="EditCompat"]
+layout_mode = 2
+text = "Введите совместимость"
+label_settings = SubResource("LabelSettings_vetg5")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="AddNewCompatValue" type="TextEdit" parent="EditCompat"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("1_6v11c")
+theme_override_styles/focus = ExtResource("2_3f3e0")
+wrap_mode = 1
+scroll_fit_content_height = true
+caret_blink = true
+
+[node name="AddNewCompat" parent="EditCompat" instance=ExtResource("3_pxn1g")]
+layout_mode = 2
+text = "Добавить новое значение"
+
+[node name="DeleteCompatBtn" parent="EditCompat" instance=ExtResource("3_pxn1g")]
+layout_mode = 2
+text = "Удалить совместимость"

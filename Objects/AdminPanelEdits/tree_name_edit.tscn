@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://btqjf5hafc4fb"]
 
-[ext_resource type="Script" path="res://Objects/tree_name_edit.gd" id="1_vcam5"]
-[ext_resource type="StyleBox" uid="uid://cc3y63knchcv3" path="res://Assets/Styles/white_back_blue_borders.tres" id="2_sjp7u"]
-[ext_resource type="StyleBox" uid="uid://bv1o2ciq0ndps" path="res://Assets/Styles/white_back_red_borders.tres" id="3_awaw2"]
-[ext_resource type="PackedScene" uid="uid://l68yt0p14fpf" path="res://Objects/cool_button.tscn" id="4_t30w8"]
+[ext_resource type="Script" path="res://Objects/AdminPanelEdits/tree_name_edit.gd" id="1_pfvll"]
+[ext_resource type="StyleBox" uid="uid://cc3y63knchcv3" path="res://Assets/Styles/white_back_blue_borders.tres" id="2_tt5yi"]
+[ext_resource type="StyleBox" uid="uid://bv1o2ciq0ndps" path="res://Assets/Styles/white_back_red_borders.tres" id="3_g7sdq"]
+[ext_resource type="PackedScene" uid="uid://l68yt0p14fpf" path="res://Objects/cool_button.tscn" id="4_kynpg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mx0dn"]
 font_size = 64
@@ -21,7 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_vcam5")
+script = ExtResource("1_pfvll")
 
 [node name="TreeNames" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -70,13 +70,13 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/caret_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("2_sjp7u")
-theme_override_styles/focus = ExtResource("3_awaw2")
+theme_override_styles/normal = ExtResource("2_tt5yi")
+theme_override_styles/focus = ExtResource("3_g7sdq")
 wrap_mode = 1
 scroll_fit_content_height = true
 caret_blink = true
 
-[node name="SubmitChange" parent="Editing" instance=ExtResource("4_t30w8")]
+[node name="SubmitChange" parent="Editing" instance=ExtResource("4_kynpg")]
 layout_mode = 2
 text = "Изменить"
 
@@ -98,13 +98,13 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/caret_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("2_sjp7u")
-theme_override_styles/focus = ExtResource("3_awaw2")
+theme_override_styles/normal = ExtResource("2_tt5yi")
+theme_override_styles/focus = ExtResource("3_g7sdq")
 wrap_mode = 1
 scroll_fit_content_height = true
 caret_blink = true
 
-[node name="AddNew" parent="Editing" instance=ExtResource("4_t30w8")]
+[node name="AddNew" parent="Editing" instance=ExtResource("4_kynpg")]
 layout_mode = 2
 text = "Добавить новое значение"
 
@@ -113,6 +113,6 @@ layout_mode = 2
 theme_override_constants/separation = 50
 theme_override_styles/separator = SubResource("StyleBoxEmpty_pyd5b")
 
-[node name="DeleteBtn" parent="Editing" instance=ExtResource("4_t30w8")]
+[node name="DeleteBtn" parent="Editing" instance=ExtResource("4_kynpg")]
 layout_mode = 2
 text = "Удалить имя"

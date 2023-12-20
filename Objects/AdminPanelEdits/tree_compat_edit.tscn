@@ -1,13 +1,13 @@
 [gd_scene load_steps=13 format=3 uid="uid://dx716lko2hxfo"]
 
-[ext_resource type="StyleBox" uid="uid://cc3y63knchcv3" path="res://Assets/Styles/white_back_blue_borders.tres" id="1_6v11c"]
-[ext_resource type="Script" path="res://Objects/tree_compat_edit.gd" id="1_woa1y"]
-[ext_resource type="StyleBox" uid="uid://bv1o2ciq0ndps" path="res://Assets/Styles/white_back_red_borders.tres" id="2_3f3e0"]
-[ext_resource type="PackedScene" uid="uid://l68yt0p14fpf" path="res://Objects/cool_button.tscn" id="3_pxn1g"]
-[ext_resource type="Theme" uid="uid://2643a6p0thsb" path="res://Assets/Themes/option_menu_theme.tres" id="4_0u1n8"]
-[ext_resource type="StyleBox" uid="uid://c3nl2fr2yle2k" path="res://Assets/Styles/blue_button.tres" id="5_upscb"]
-[ext_resource type="StyleBox" uid="uid://sj4sw626k6fa" path="res://Assets/Styles/hover_button.tres" id="6_0btge"]
-[ext_resource type="StyleBox" uid="uid://dd5xkjppnprpd" path="res://Assets/Styles/pressed_button.tres" id="7_6hd3h"]
+[ext_resource type="Script" path="res://Objects/AdminPanelEdits/tree_compat_edit.gd" id="1_fycnk"]
+[ext_resource type="StyleBox" uid="uid://cc3y63knchcv3" path="res://Assets/Styles/white_back_blue_borders.tres" id="2_jjqjv"]
+[ext_resource type="StyleBox" uid="uid://bv1o2ciq0ndps" path="res://Assets/Styles/white_back_red_borders.tres" id="3_pm0th"]
+[ext_resource type="PackedScene" uid="uid://l68yt0p14fpf" path="res://Objects/cool_button.tscn" id="4_0upt8"]
+[ext_resource type="Theme" uid="uid://2643a6p0thsb" path="res://Assets/Themes/option_menu_theme.tres" id="5_cyy4r"]
+[ext_resource type="StyleBox" uid="uid://c3nl2fr2yle2k" path="res://Assets/Styles/blue_button.tres" id="6_24dt4"]
+[ext_resource type="StyleBox" uid="uid://sj4sw626k6fa" path="res://Assets/Styles/hover_button.tres" id="7_ocqdn"]
+[ext_resource type="StyleBox" uid="uid://dd5xkjppnprpd" path="res://Assets/Styles/pressed_button.tres" id="8_ee62j"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p8tw8"]
 font_size = 64
@@ -27,7 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_woa1y")
+script = ExtResource("1_fycnk")
 
 [node name="TreeCompat" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -75,13 +75,13 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/caret_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("1_6v11c")
-theme_override_styles/focus = ExtResource("2_3f3e0")
+theme_override_styles/normal = ExtResource("2_jjqjv")
+theme_override_styles/focus = ExtResource("3_pm0th")
 wrap_mode = 1
 scroll_fit_content_height = true
 caret_blink = true
 
-[node name="SubmitCompatChange" parent="EditCompat" instance=ExtResource("3_pxn1g")]
+[node name="SubmitCompatChange" parent="EditCompat" instance=ExtResource("4_0upt8")]
 layout_mode = 2
 text = "Изменить"
 
@@ -103,7 +103,7 @@ autowrap_mode = 3
 
 [node name="SelectedTree1" type="OptionButton" parent="EditCompat"]
 layout_mode = 2
-theme = ExtResource("4_0u1n8")
+theme = ExtResource("5_cyy4r")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -113,9 +113,9 @@ theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxEmpty_dwuk1")
-theme_override_styles/normal = ExtResource("5_upscb")
-theme_override_styles/hover = ExtResource("6_0btge")
-theme_override_styles/pressed = ExtResource("7_6hd3h")
+theme_override_styles/normal = ExtResource("6_24dt4")
+theme_override_styles/hover = ExtResource("7_ocqdn")
+theme_override_styles/pressed = ExtResource("8_ee62j")
 item_count = 1
 popup/item_0/text = "Дуб"
 popup/item_0/id = 0
@@ -130,7 +130,7 @@ autowrap_mode = 3
 
 [node name="SelectedTree2" type="OptionButton" parent="EditCompat"]
 layout_mode = 2
-theme = ExtResource("4_0u1n8")
+theme = ExtResource("5_cyy4r")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -140,9 +140,9 @@ theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxEmpty_dwuk1")
-theme_override_styles/normal = ExtResource("5_upscb")
-theme_override_styles/hover = ExtResource("6_0btge")
-theme_override_styles/pressed = ExtResource("7_6hd3h")
+theme_override_styles/normal = ExtResource("6_24dt4")
+theme_override_styles/hover = ExtResource("7_ocqdn")
+theme_override_styles/pressed = ExtResource("8_ee62j")
 item_count = 1
 popup/item_0/text = "Дуб"
 popup/item_0/id = 0
@@ -160,16 +160,16 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/caret_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("1_6v11c")
-theme_override_styles/focus = ExtResource("2_3f3e0")
+theme_override_styles/normal = ExtResource("2_jjqjv")
+theme_override_styles/focus = ExtResource("3_pm0th")
 wrap_mode = 1
 scroll_fit_content_height = true
 caret_blink = true
 
-[node name="AddNewCompat" parent="EditCompat" instance=ExtResource("3_pxn1g")]
+[node name="AddNewCompat" parent="EditCompat" instance=ExtResource("4_0upt8")]
 layout_mode = 2
 text = "Добавить новое значение"
 
-[node name="DeleteCompatBtn" parent="EditCompat" instance=ExtResource("3_pxn1g")]
+[node name="DeleteCompatBtn" parent="EditCompat" instance=ExtResource("4_0upt8")]
 layout_mode = 2
 text = "Удалить совместимость"

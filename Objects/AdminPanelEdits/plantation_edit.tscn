@@ -1,13 +1,13 @@
 [gd_scene load_steps=13 format=3 uid="uid://blmb50kvkrsn2"]
 
-[ext_resource type="Script" path="res://Objects/plantation_edit.gd" id="1_qymb8"]
-[ext_resource type="StyleBox" uid="uid://cc3y63knchcv3" path="res://Assets/Styles/white_back_blue_borders.tres" id="3_d1t2s"]
-[ext_resource type="StyleBox" uid="uid://bv1o2ciq0ndps" path="res://Assets/Styles/white_back_red_borders.tres" id="4_p3ejf"]
-[ext_resource type="Theme" uid="uid://2643a6p0thsb" path="res://Assets/Themes/option_menu_theme.tres" id="5_c3m2r"]
-[ext_resource type="PackedScene" uid="uid://l68yt0p14fpf" path="res://Objects/cool_button.tscn" id="5_mv65n"]
-[ext_resource type="StyleBox" uid="uid://c3nl2fr2yle2k" path="res://Assets/Styles/blue_button.tres" id="6_v734m"]
-[ext_resource type="StyleBox" uid="uid://sj4sw626k6fa" path="res://Assets/Styles/hover_button.tres" id="7_2fn00"]
-[ext_resource type="StyleBox" uid="uid://dd5xkjppnprpd" path="res://Assets/Styles/pressed_button.tres" id="8_3tv7g"]
+[ext_resource type="Script" path="res://Objects/AdminPanelEdits/plantation_edit.gd" id="1_hjfco"]
+[ext_resource type="StyleBox" uid="uid://cc3y63knchcv3" path="res://Assets/Styles/white_back_blue_borders.tres" id="2_wpu18"]
+[ext_resource type="StyleBox" uid="uid://bv1o2ciq0ndps" path="res://Assets/Styles/white_back_red_borders.tres" id="3_38cvr"]
+[ext_resource type="PackedScene" uid="uid://l68yt0p14fpf" path="res://Objects/cool_button.tscn" id="4_5cthc"]
+[ext_resource type="Theme" uid="uid://2643a6p0thsb" path="res://Assets/Themes/option_menu_theme.tres" id="5_sd2fc"]
+[ext_resource type="StyleBox" uid="uid://c3nl2fr2yle2k" path="res://Assets/Styles/blue_button.tres" id="6_cf2vs"]
+[ext_resource type="StyleBox" uid="uid://sj4sw626k6fa" path="res://Assets/Styles/hover_button.tres" id="7_l66cd"]
+[ext_resource type="StyleBox" uid="uid://dd5xkjppnprpd" path="res://Assets/Styles/pressed_button.tres" id="8_t6con"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mx0dn"]
 font_size = 64
@@ -27,25 +27,25 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_qymb8")
+script = ExtResource("1_hjfco")
 
-[node name="TreeNames" type="VBoxContainer" parent="."]
+[node name="Plantations" type="VBoxContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 25
 
-[node name="Label" type="Label" parent="TreeNames"]
+[node name="Label" type="Label" parent="Plantations"]
 layout_mode = 2
 text = "Насаждения"
 label_settings = SubResource("LabelSettings_mx0dn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="TreeNames"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Plantations"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Options" type="VBoxContainer" parent="TreeNames/ScrollContainer"]
+[node name="Options" type="VBoxContainer" parent="Plantations/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -76,13 +76,13 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/caret_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("3_d1t2s")
-theme_override_styles/focus = ExtResource("4_p3ejf")
+theme_override_styles/normal = ExtResource("2_wpu18")
+theme_override_styles/focus = ExtResource("3_38cvr")
 wrap_mode = 1
 scroll_fit_content_height = true
 caret_blink = true
 
-[node name="SubmitChange" parent="Editing" instance=ExtResource("5_mv65n")]
+[node name="SubmitChange" parent="Editing" instance=ExtResource("4_5cthc")]
 layout_mode = 2
 text = "Изменить"
 
@@ -104,8 +104,8 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/caret_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("3_d1t2s")
-theme_override_styles/focus = ExtResource("4_p3ejf")
+theme_override_styles/normal = ExtResource("2_wpu18")
+theme_override_styles/focus = ExtResource("3_38cvr")
 wrap_mode = 1
 scroll_fit_content_height = true
 caret_blink = true
@@ -120,7 +120,7 @@ autowrap_mode = 3
 
 [node name="SelectedCity" type="OptionButton" parent="Editing"]
 layout_mode = 2
-theme = ExtResource("5_c3m2r")
+theme = ExtResource("5_sd2fc")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -130,14 +130,14 @@ theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xugni")
-theme_override_styles/normal = ExtResource("6_v734m")
-theme_override_styles/hover = ExtResource("7_2fn00")
-theme_override_styles/pressed = ExtResource("8_3tv7g")
+theme_override_styles/normal = ExtResource("6_cf2vs")
+theme_override_styles/hover = ExtResource("7_l66cd")
+theme_override_styles/pressed = ExtResource("8_t6con")
 item_count = 1
 popup/item_0/text = "Саранск"
 popup/item_0/id = 0
 
-[node name="SubmitNewPlant" parent="Editing" instance=ExtResource("5_mv65n")]
+[node name="SubmitNewPlant" parent="Editing" instance=ExtResource("4_5cthc")]
 layout_mode = 2
 text = "Добавить новое насаждение"
 
@@ -146,6 +146,6 @@ layout_mode = 2
 theme_override_constants/separation = 50
 theme_override_styles/separator = SubResource("StyleBoxEmpty_pyd5b")
 
-[node name="DeleteBtn" parent="Editing" instance=ExtResource("5_mv65n")]
+[node name="DeleteBtn" parent="Editing" instance=ExtResource("4_5cthc")]
 layout_mode = 2
 text = "Удалить насаждение"

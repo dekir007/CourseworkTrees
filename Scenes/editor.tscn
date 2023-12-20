@@ -30,3 +30,6 @@ sprite = NodePath("../Photo")
 offset_right = 40.0
 offset_bottom = 19.0
 label_settings = SubResource("LabelSettings_d1qoy")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 2, 2, 3, 7)

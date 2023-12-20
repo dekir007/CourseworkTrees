@@ -33,6 +33,7 @@ window/stretch/aspect="ignore"
 folder_colors={
 "res://Assets/": "red",
 "res://Objects/": "yellow",
+"res://Objects/AdminPanelEdits/": "red",
 "res://Scenes/": "green",
 "res://Scripts/": "purple",
 "res://addons/": "gray"

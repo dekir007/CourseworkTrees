@@ -1,14 +1,16 @@
 extends PanelContainer
 
-const TREE_NAME_EDIT = preload("res://Objects/tree_name_edit.tscn")
-const TREE_COMPAT_EDIT = preload("res://Objects/tree_compat_edit.tscn")
-const PLANTATION_EDIT = preload("res://Objects/plantation_edit.tscn")
+const PLANTATION_EDIT = preload("res://Objects/AdminPanelEdits/plantation_edit.tscn")
+const TREE_COMPAT_EDIT = preload("res://Objects/AdminPanelEdits/tree_compat_edit.tscn")
+const TREE_NAME_EDIT = preload("res://Objects/AdminPanelEdits/tree_name_edit.tscn")
+const CITY_EDIT = preload("res://Objects/AdminPanelEdits/city_edit.tscn")
 
 @onready var left: Control = $HBoxContainer/Left
 
 @onready var change_names:  = $HBoxContainer/Right/ChangeNames as CoolButton
 @onready var change_compat: = $HBoxContainer/Right/ChangeCompat as CoolButton
 @onready var change_plantations: CoolButton = $HBoxContainer/Right/ChangePlantations
+@onready var change_cities: CoolButton = $HBoxContainer/Right/ChangeCities
 
 
 func _ready() -> void:
@@ -30,9 +32,15 @@ func _ready() -> void:
 		var plant_edit = PLANTATION_EDIT.instantiate()
 		left.add_child(plant_edit)
 		)
+	change_cities.btn.button_up.connect(func():
+		left.get_children()[0].queue_free()
+		var city_edit = CITY_EDIT.instantiate()
+		left.add_child(city_edit)
+		)
 	
-	var tree_name_edit = TREE_NAME_EDIT.instantiate()
-	left.add_child(tree_name_edit)
+	
+	var tree_name_edit1 = TREE_NAME_EDIT.instantiate()
+	left.add_child(tree_name_edit1)
 
 
 func _on_exit_button_up() -> void:

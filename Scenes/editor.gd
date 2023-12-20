@@ -38,12 +38,29 @@ func update_plantation_names():
 
 func plant_trees():
 	 
-	Globals.db.query("select * from trees")
-	 
+	Globals.db.query("select * from trees order by PlantationID") 
+	var pl = Globals.db.query_result[0]["PlantationID"]
+	
+	var hull = ConvexHull.new()
+	
+	var coords : Array[Vector2] = []
 	for row in Globals.db.query_result:
 		var tree = TREE.instantiate()
 		tree.tree = row
 		tmp.add_child(tree)
+		
+		if pl != row["PlantationID"]:
+			pl = row["PlantationID"]
+			if coords.size() > 2:
+				var polygon = Polygon2D.new()
+				
+				polygon.polygon = hull.convexHull(coords.duplicate())
+				polygon.modulate.a = 0.5
+				coords.clear()
+				add_child(polygon)
+		var split = row["Coords"].split(';')
+		coords.append(Vector2(int(split[0]), int(split[1])))
+	
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

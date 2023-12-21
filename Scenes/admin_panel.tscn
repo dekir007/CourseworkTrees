@@ -56,6 +56,10 @@ text = "Редактировать насаждения"
 layout_mode = 2
 text = "Редактировать города"
 
+[node name="ChangeLandscaping" parent="HBoxContainer/Right" instance=ExtResource("5_8dq3o")]
+layout_mode = 2
+text = "Редактировать озеленения"
+
 [node name="HSeparator" type="HSeparator" parent="HBoxContainer/Right"]
 layout_mode = 2
 size_flags_vertical = 3

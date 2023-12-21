@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://deel6f7y4jke4"]
+
+[ext_resource type="Script" path="res://Objects/landscape_option.gd" id="1_hbsa3"]
+[ext_resource type="StyleBox" uid="uid://c3nl2fr2yle2k" path="res://Assets/Styles/blue_button.tres" id="2_ssvtt"]
+[ext_resource type="StyleBox" uid="uid://sj4sw626k6fa" path="res://Assets/Styles/hover_button.tres" id="3_jqgye"]
+[ext_resource type="StyleBox" uid="uid://dd5xkjppnprpd" path="res://Assets/Styles/pressed_button.tres" id="4_1kk2x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k8gxj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s4xc2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dmcri"]
+content_margin_left = 25.0
+content_margin_top = 15.0
+content_margin_right = 25.0
+content_margin_bottom = 15.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_cvpw2"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="LandscapeOption" type="PanelContainer"]
+theme_override_styles/panel = SubResource("StyleBoxEmpty_k8gxj")
+script = ExtResource("1_hbsa3")
+
+[node name="NamesBtn" type="Button" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("2_ssvtt")
+theme_override_styles/hover = ExtResource("3_jqgye")
+theme_override_styles/pressed = ExtResource("4_1kk2x")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s4xc2")
+toggle_mode = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dmcri")
+text = "Изменить имена деревьев"
+label_settings = SubResource("LabelSettings_cvpw2")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

@@ -9,6 +9,3 @@ class_name NameOption
 
 @onready var btn: Button = $NamesBtn
 @onready var label: Label = $Label
-
-#func _ready() -> void:
-	#label.text = text

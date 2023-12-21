@@ -1,0 +1,255 @@
+[gd_scene load_steps=16 format=3 uid="uid://iqj0dafmfkm5"]
+
+[ext_resource type="Script" path="res://Objects/AdminPanelEdits/landscaping_edit.gd" id="1_g5xot"]
+[ext_resource type="StyleBox" uid="uid://cc3y63knchcv3" path="res://Assets/Styles/white_back_blue_borders.tres" id="2_h1dax"]
+[ext_resource type="StyleBox" uid="uid://bv1o2ciq0ndps" path="res://Assets/Styles/white_back_red_borders.tres" id="3_ivn6y"]
+[ext_resource type="PackedScene" uid="uid://l68yt0p14fpf" path="res://Objects/cool_button.tscn" id="4_nifl4"]
+[ext_resource type="Theme" uid="uid://2643a6p0thsb" path="res://Assets/Themes/option_menu_theme.tres" id="5_i88ql"]
+[ext_resource type="StyleBox" uid="uid://c3nl2fr2yle2k" path="res://Assets/Styles/blue_button.tres" id="6_865n8"]
+[ext_resource type="StyleBox" uid="uid://sj4sw626k6fa" path="res://Assets/Styles/hover_button.tres" id="7_a0ei2"]
+[ext_resource type="StyleBox" uid="uid://dd5xkjppnprpd" path="res://Assets/Styles/pressed_button.tres" id="8_tq6er"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mx0dn"]
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pyd5b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oueku"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ai0k4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yyv43"]
+content_margin_left = 25.0
+content_margin_top = 25.0
+content_margin_right = 25.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.113725, 0.478431, 1, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vfyh"]
+content_margin_left = 25.0
+content_margin_top = 15.0
+content_margin_right = 25.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.945098, 0, 0.219608, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d7d44"]
+
+[node name="LandscapingEdit" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g5xot")
+
+[node name="CityLandscapings" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="CityLandscapings"]
+layout_mode = 2
+text = "Озеленения"
+label_settings = SubResource("LabelSettings_mx0dn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CityLandscapings"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Options" type="VBoxContainer" parent="CityLandscapings/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 25
+
+[node name="Editing" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.7
+theme_override_constants/separation = 25
+
+[node name="HSeparator" type="HSeparator" parent="Editing"]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxEmpty_pyd5b")
+
+[node name="Label4" type="Label" parent="Editing"]
+layout_mode = 2
+text = "Выберите город"
+label_settings = SubResource("LabelSettings_oueku")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="SelectedCityEdit" type="OptionButton" parent="Editing"]
+layout_mode = 2
+theme = ExtResource("5_i88ql")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ai0k4")
+theme_override_styles/normal = ExtResource("6_865n8")
+theme_override_styles/hover = ExtResource("7_a0ei2")
+theme_override_styles/pressed = ExtResource("8_tq6er")
+item_count = 1
+popup/item_0/text = "Саранск"
+popup/item_0/id = 0
+
+[node name="PopEdit" type="TextEdit" parent="Editing"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(1, 0, 0, 0.847059)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("2_h1dax")
+theme_override_styles/focus = ExtResource("3_ivn6y")
+placeholder_text = "Введите население"
+wrap_mode = 1
+scroll_fit_content_height = true
+caret_blink = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Editing"]
+layout_mode = 2
+
+[node name="PercentageEdit" type="TextEdit" parent="Editing/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(1, 0, 0, 0.847059)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("2_h1dax")
+theme_override_styles/focus = ExtResource("3_ivn6y")
+placeholder_text = "Введите процент"
+wrap_mode = 1
+scroll_fit_content_height = true
+caret_blink = true
+
+[node name="CalcPercentBtn" parent="Editing/HBoxContainer" instance=ExtResource("4_nifl4")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Рассчитать"
+
+[node name="DateInput" type="HBoxContainer" parent="Editing"]
+layout_mode = 2
+alignment = 1
+
+[node name="DayInput" type="TextEdit" parent="Editing/DateInput"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0.815686, 0.113725, 0.0745098, 0.705882)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_yyv43")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1vfyh")
+placeholder_text = "01"
+autowrap_mode = 1
+caret_blink = true
+
+[node name="MonthInput" type="OptionButton" parent="Editing/DateInput"]
+layout_mode = 2
+theme = ExtResource("5_i88ql")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d7d44")
+theme_override_styles/normal = ExtResource("6_865n8")
+theme_override_styles/hover = ExtResource("7_a0ei2")
+theme_override_styles/pressed = ExtResource("8_tq6er")
+item_count = 12
+selected = 0
+popup/item_0/text = "Январь"
+popup/item_0/id = 0
+popup/item_1/text = "Февраль"
+popup/item_1/id = 1
+popup/item_2/text = "Март"
+popup/item_2/id = 2
+popup/item_3/text = "Апрель"
+popup/item_3/id = 3
+popup/item_4/text = "Май"
+popup/item_4/id = 4
+popup/item_5/text = "Июнь"
+popup/item_5/id = 5
+popup/item_6/text = "Июль"
+popup/item_6/id = 6
+popup/item_7/text = "Август"
+popup/item_7/id = 7
+popup/item_8/text = "Сентябрь"
+popup/item_8/id = 8
+popup/item_9/text = "Октрябрь"
+popup/item_9/id = 9
+popup/item_10/text = "Ноябрь"
+popup/item_10/id = 10
+popup/item_11/text = "Декабрь"
+popup/item_11/id = 11
+
+[node name="YearInput" type="TextEdit" parent="Editing/DateInput"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0.815686, 0.113725, 0.0745098, 0.705882)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_yyv43")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1vfyh")
+placeholder_text = "2023"
+autowrap_mode = 1
+caret_blink = true
+
+[node name="SubmitChange" parent="Editing" instance=ExtResource("4_nifl4")]
+layout_mode = 2
+text = "Изменить"
+
+[node name="HSeparator4" type="HSeparator" parent="Editing"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxEmpty_pyd5b")
+
+[node name="AddNewLandscape" parent="Editing" instance=ExtResource("4_nifl4")]
+layout_mode = 2
+text = "Добавить как новое значение"
+
+[node name="HSeparator3" type="HSeparator" parent="Editing"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxEmpty_pyd5b")
+
+[node name="DeleteBtn" parent="Editing" instance=ExtResource("4_nifl4")]
+layout_mode = 2
+text = "Удалить озеленение"

@@ -20,7 +20,7 @@ func _ready() -> void:
 	if clamp_sprite:
 		sprite_rect = sprite.get_rect()
 		half_sprite_size = sprite_rect.size / 2 * sprite.scale
-		print(half_sprite_size)
+		print(half_sprite_size*2)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("zoom_up"):

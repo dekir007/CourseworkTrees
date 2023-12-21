@@ -109,5 +109,10 @@ func convexHull(points:Array[Vector2]):
 		print("(" + str(p.x) + ", " + str(p.y) + ")")
 		S.pop_back()
 
-
-
+func getArea(points:Array[Vector2]):
+	var area = 0.
+	var q = points[-1]
+	for p in points:  
+		area += p[0] * q[1] - p[1] * q[0]
+		q = p
+	return area / 2

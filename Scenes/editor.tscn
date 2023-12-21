@@ -24,12 +24,11 @@ script = ExtResource("3_7rnwo")
 clamp_viewport = false
 sprite = NodePath("../Photo")
 
+[node name="Polygons" type="Node2D" parent="."]
+
 [node name="tmp" type="Node2D" parent="."]
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 19.0
 label_settings = SubResource("LabelSettings_d1qoy")
-
-[node name="Polygon2D" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(0, 0, 2, 2, 3, 7)

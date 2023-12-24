@@ -51,7 +51,22 @@ func show_landscaping():
 	selected_city_edit.select(-1)
 
 func calc_percent():
-	pass
+	if selected_city_edit.get_selected_id() == -1:
+		return
+	var q = "select PlantationID, group_concat(Coords) as GroupCoords from Trees t join Plantation p on t.PlantationID=p.ID where p.CityID=" + str(selected_city_edit.get_selected_id()+1) +" group by PlantationID"
+	Globals.db.query(q)
+	var area : float = 0
+	for plantation_row in Globals.db.query_result:
+		var pl_id = plantation_row["PlantationID"]
+		var group_coords =  plantation_row["GroupCoords"]
+		var points : Array[Vector2] = []
+		for point in group_coords.split(','):
+			var split = point.split(';')
+			points.append(Vector2(int(split[0]), int(split[1])))
+		area += get_area(points)
+	Globals.db.query("select area from Cities where id = " + str(selected_city_edit.get_selected_id()+1))
+	var c = 20 # нормирующий показатель :))))))
+	percentage_edit.text = str(snappedf(area / (float(Globals.db.query_result[0]["Area"]) * 1_000_000) * 100 * c, 0.01))
 
 func submit_landscape_edit():
 	if (cur_option == null 
@@ -99,8 +114,7 @@ func add_new_landscape():
 				print("anon func changed cur_option: " + cur_option.label.text)
 				)
 		cur_option = null
-	
-	
+
 
 func delete_landscape():
 	if cur_option == null:
@@ -117,6 +131,14 @@ func delete_landscape():
 
 func get_input_date():
 	return year_input.text +"-"+str(month_input.get_selected_id()+1).lpad(2, "0") +"-"+day_input.text.lpad(2, "0")
+
+func get_area(points:Array[Vector2]):
+	var area = 0.
+	var q = points[-1]
+	for p in points:  
+		area += p[0] * q[1] - p[1] * q[0]
+		q = p
+	return abs(area / 2)
 
 func set_cur_option(new_opt : LandscapeOption):
 	if cur_option != null:

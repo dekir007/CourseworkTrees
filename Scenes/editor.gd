@@ -1,21 +1,25 @@
 extends Node2D
+class_name Editor
 
 const ADD_TREE_QUERY_BOX = preload("res://Objects/add_tree_query_box.tscn")
 const TREE_SILHOUETTE = preload("res://Assets/tree-silhouette.png")
 const INFO_BOX = preload("res://Objects/info_box.tscn")
 const TREE = preload("res://Objects/tree.tscn")
+const AREA_2D = preload("res://Objects/area_2d.tscn")
+
+@export var cityid : int = 1
 
 @onready var tmp: Node2D = $tmp
 @onready var polygons: Node2D = $Polygons
+@onready var photo: Sprite2D = $Photo
 
 var tree_kind_names : Array[String]
 var plantation_names : Array[String]
 
 var plantation_polygons : Dictionary # key = num, val = polygon2d
-@onready var hull : ConvexHull = ConvexHull.new()
-
 
 func _ready() -> void:
+	cityid = ProjectSettings.get_setting("global/CityID")
 	update_tree_kind_names()
 	update_plantation_names()
 	
@@ -27,7 +31,6 @@ func _process(_delta: float) -> void:
 	$Label.global_position = (get_global_mouse_position()) + Vector2(10,0)
 
 func update_tree_kind_names():
-	 
 	Globals.db.query("select Name from TreeNames")
 	 
 	tree_kind_names.clear()
@@ -35,14 +38,16 @@ func update_tree_kind_names():
 		tree_kind_names.append(row["Name"])
 
 func update_plantation_names():
-	Globals.db.query("select Name from Plantation")
+	Globals.db.query("select Name from Plantation where CityID = " + str(cityid))
 	 
 	plantation_names.clear()
 	for row in Globals.db.query_result:
 		plantation_names.append(row["Name"])
 
 func plant_trees():
-	Globals.db.query("select * from trees order by PlantationID") 
+	Globals.db.query("select t.id ID, t.Name Name, t.TreeID TreeID, t.PlantationID PlantationID , t.Coords Coords, t.PlantDate PlantDate, t.CutDate CutDate from trees t join Plantation p on p.ID=t.PlantationID where p.CityID=" + str(cityid) + " order by PlantationID") #("select * from trees order by PlantationID") 
+	if Globals.db.query_result.size() == 0:
+		return
 	var pl = Globals.db.query_result[0]["PlantationID"]
 	
 	var coords : Array[Vector2] = []
@@ -55,7 +60,7 @@ func plant_trees():
 			if coords.size() > 2:
 				var polygon = Polygon2D.new()
 				polygon.name = "Plantation " + str(pl)
-				polygon.polygon = hull.convexHull(coords.duplicate())
+				polygon.polygon = Geometry2D.convex_hull(coords.duplicate())
 				polygon.modulate.a = 0.5
 				coords.clear()
 				polygons.add_child(polygon)
@@ -68,7 +73,7 @@ func plant_trees():
 			if coords.size() > 2:
 				var polygon = Polygon2D.new()
 				polygon.name = "Plantation " + str(pl)
-				polygon.polygon = hull.convexHull(coords.duplicate())
+				polygon.polygon = Geometry2D.convex_hull(coords.duplicate()) #hull.convexHull(coords.duplicate())
 				polygon.modulate.a = 0.5
 				coords.clear()
 				polygons.add_child(polygon)
@@ -85,6 +90,15 @@ func _unhandled_input(event: InputEvent) -> void:
 			query_box.global_position = mouse_click
 			query_box.names = tree_kind_names
 			query_box.plantation_names = plantation_names
+			var area = AREA_2D.instantiate()
+			area.global_position = mouse_click
+			add_child(area)
+			area.area_entered.connect(
+				func(ar): 
+					print("area entered ", ar.get_parent().tree)
+					query_box.trees_nearby.append(ar.get_parent().tree)
+					)
+			query_box.tree_exiting.connect(area.queue_free)
 			tmp.add_child(query_box)
 
 func handle_query_box(args : AddTreeQueryBox.TreeArgs):
@@ -100,28 +114,35 @@ func handle_query_box(args : AddTreeQueryBox.TreeArgs):
 	if Globals.db.error_message != "not an error":
 		show_info_box(Globals.db.error_message)
 		return
-	show_info_box("Успех!")
 	
+	var tree_nearby_ids = args.sender.trees_nearby.map(func(x): return str(x["TreeID"]))
 	# удаляем бокс, забираем новые данные
 	args.sender.queue_free()
 	
 	Globals.db.query("select last_insert_rowid()")
 	var id = Globals.db.query_result[0].values()[0]
 	Globals.db.query("select * from trees where id = " + str(id))
-	var row = Globals.db.query_result
+	var row = Globals.db.query_result[0].duplicate()
+	var tree_kind_id = str(row["TreeID"])
+	
+	# садим дерево
+	var tree = TREE.instantiate()
+	tree.tree = row
+	tmp.add_child(tree)
+	
 	# обновляем полигон
 	
 		
 	# если уже есть
-	if plantation_polygons.has(row[0]["PlantationID"]):
-		var pl : Polygon2D = plantation_polygons[row[0]["PlantationID"]]
+	if plantation_polygons.has(row["PlantationID"]):
+		var pl : Polygon2D = plantation_polygons[row["PlantationID"]]
 		#pl.name = "Plantation " + str(row[0]["PlantationID"])
 		var points = pl.polygon.duplicate()
-		var split = row[0]["Coords"].split(';')
+		var split = row["Coords"].split(';')
 		points.append(Vector2(int(split[0]), int(split[1])))
-		pl.polygon = hull.convexHull(points)
+		pl.polygon = Geometry2D.convex_hull(points)# hull.convexHull(points)
 	else: # делаем новый
-		q = "select * from trees where plantationid = " + str(row[0]["PlantationID"])
+		q = "select * from trees where plantationid = " + str(row["PlantationID"])
 		Globals.db.query(q)
 		if Globals.db.query_result.size() >= 3:
 			var points :Array[Vector2] = []
@@ -129,15 +150,35 @@ func handle_query_box(args : AddTreeQueryBox.TreeArgs):
 				var split = tree_row["Coords"].split(';')
 				points.append(Vector2(int(split[0]), int(split[1])))
 			var polygon = Polygon2D.new()
-			polygon.name = "Plantation " + str(row[0]["PlantationID"])
+			polygon.name = "Plantation " + str(row["PlantationID"])
 			polygon.modulate.a = 0.5
-			polygon.polygon = hull.convexHull(points)
+			polygon.polygon = Geometry2D.convex_hull(points) #hull.convexHull(points)
 			polygons.add_child(polygon)
-			plantation_polygons[row[0]["PlantationID"]] = polygon
-	# садим дерево
-	var tree = TREE.instantiate()
-	tree.tree = row[0]
-	tmp.add_child(tree)
+			plantation_polygons[row["PlantationID"]] = polygon
+	
+	
+	#tree_nearby_ids = "(" + ", ".join(tree_nearby_ids) + ")" #1 (1,4,4)
+	print(tree_nearby_ids)
+	var good = 0
+	var neut = 0
+	var bad = 0
+	for each_id in tree_nearby_ids:
+		if each_id == tree_kind_id:
+			neut += 1
+			continue
+		Globals.db.query("select Compatibility from TreesCompatibility where (tree1 = %s and tree2 = %s) or (tree2 = %s and tree1 = %s)" % [tree_kind_id, each_id, tree_kind_id, each_id])
+		var v = Globals.db.query_result[0].values()
+		var compat = Globals.db.query_result[0].values()[0]
+		if compat == 1:
+			good += 1
+		elif compat == 0:
+			neut += 1
+		elif compat == -1:
+			bad += 1
+	var messenge = "Успешно добавлено\nХороших соседей: %s\nНейтральных: %s\nПлохих: %s" % [good,neut,bad]
+	
+	show_info_box(messenge)
+	
 
 func handle_change_tree_box(args : ChangeTreeBox.ChangeArgs):
 	if args.delete:
@@ -162,7 +203,7 @@ func handle_change_tree_box(args : ChangeTreeBox.ChangeArgs):
 					# TODO doesnt work every time
 					polygon.name = "Plantation " + str(args.tree["PlantationID"])
 					polygon.modulate.a = 0.5
-					polygon.polygon = hull.convexHull(points)
+					polygon.polygon = Geometry2D.convex_hull(points) #hull.convexHull(points)
 					polygons.add_child(polygon)
 					plantation_polygons[args.tree["PlantationID"]] = polygon
 		return

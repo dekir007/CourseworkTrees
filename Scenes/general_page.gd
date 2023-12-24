@@ -41,13 +41,19 @@ func _on_tables_item_selected(index: int) -> void:
 				output.append_text("[b]"+str(row["ID"]) +". Название: " + row["Name"] + "[/b]\nГород: "+str(row["Город"]) + "\n")
 		
 		"Trees":
-			Globals.db.query("select t.id ID, t.Name Name, tn.name TreeName, p.name Plantation, t.coords Coords, PlantDate, CutDate from Trees t left outer join treenames tn on t.treeid=tn.id left outer join Plantation p on p.ID=t.PlantationID order by t.id, t.plantationid, plantdate")
+			Globals.db.query("select t.id ID, t.Name Name, tn.name TreeName, p.name Plantation, t.coords Coords, PlantDate, CutDate, tp.Photo Photo from Trees t left outer join treenames tn on t.treeid=tn.id left outer join Plantation p on p.ID=t.PlantationID left outer join TreePhotos tp on tp.ID=t.ID order by t.id, t.plantationid, plantdate")
 			#Globals.db.query("select * from trees")
 			output.clear()
 			output.append_text("[b]Деревья[/b]\n")
 			for row in Globals.db.query_result:
-				#output.append_text(str(row)+"\n")
-				output.append_text("[b]"+str(row["ID"]) +". Название: " + str(row["Name"]) + "[/b]\nВид дерева: "+str(row["TreeName"]) + "\nНасаждение: "+str(row["Plantation"]) + "\nКоординаты: "+str(row["Coords"]) + "\nДата посадки: "+str(row["PlantDate"]) + "\nДата вырубки: "+str(row["CutDate"] if row["CutDate"] != null else "Не вырублено") + "\n")
+				# слишком сложно, хз как добавить
+				#if row["Photo"] != null:
+					#var ph = Image.new()
+					#var a = row["Photo"]
+					#if a is PackedByteArray:
+						#ph.load_png_from_buffer(row["Photo"])
+						#var tex = ImageTexture.create_from_image(ph)
+				output.append_text("[b]"+str(row["ID"]) +". Название: " + str(row["Name"]) + "[/b]\nВид дерева: "+str(row["TreeName"]) + "\nНасаждение: "+str(row["Plantation"]) + "\nКоординаты: "+str(row["Coords"]) + "\nДата посадки: "+str(row["PlantDate"]) + "\nДата вырубки: "+str(row["CutDate"] if row["CutDate"] != null else "Не вырублено") + "\nКартинка: [img=200x200]res://Assets/pine-tree.png[/img]\n" )
 		
 	#Globals.db.query("SELECT name FROM PRAGMA_TABLE_INFO('" + tables.get_item_text(index) + "')")
 	 

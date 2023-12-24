@@ -1,5 +1,10 @@
 extends PanelContainer
 
+# TODO
+#нет картинок деревьев и не будет
+#нет добавления картинок деревьев и не будет
+#нет отчетов
+
 const PLANTATION_EDIT = preload("res://Objects/AdminPanelEdits/plantation_edit.tscn")
 const TREE_COMPAT_EDIT = preload("res://Objects/AdminPanelEdits/tree_compat_edit.tscn")
 const TREE_NAME_EDIT = preload("res://Objects/AdminPanelEdits/tree_name_edit.tscn")

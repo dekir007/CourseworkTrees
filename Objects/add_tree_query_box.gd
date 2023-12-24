@@ -15,6 +15,8 @@ signal query(tree_args : TreeArgs)
 var names : Array[String]
 var plantation_names : Array[String]
 
+var trees_nearby : Array
+
 func _ready() -> void:
 	cool_button.btn.button_up.connect(func():
 		var args = TreeArgs.new()
